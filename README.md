@@ -1,6 +1,6 @@
-# MLSL OpenData tutorial
+# Deep Learning on AWS Open Data Registry: Automatic Building and Road Extraction from Satellite and LiDAR
 
-This is the repository for MLSL OpenData tutorial content.
+This is the repository for OpenData tutorial content by MLSL.
 
 ## Setup
 
