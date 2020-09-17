@@ -1,0 +1,113 @@
+model_name: cresi
+
+model_path:
+train: true
+infer: true
+
+pretrained: false
+nn_framework: torch
+batch_size: 12
+
+data_specs:
+    width: 1280
+    height: 1280
+    image_type: 16bit
+    channels: 4
+    label_type: mask
+    is_categorical: false
+    mask_channels: 8
+    val_holdout_frac: 0.05
+    dtype:
+
+training_data_csv: 'csv_file_path'
+validation_data_csv: 'auto_split_from_training_dataset'
+inference_data_csv: 'csv_file_path'
+
+training_augmentation:
+    augmentations:
+        HorizontalFlip:
+            p: 0.5
+        RandomRotate90:
+            p: 0.5
+        RandomCrop:
+            height: 1280
+            width: 1280
+            p: 1.0
+        Normalize:
+            mean:
+                - 0.0
+                - 0.0
+                - 0.0
+                - 0.0
+            std:
+                - 1.0
+                - 1.0
+                - 1.0
+                - 20.0
+            max_pixel_value: 255
+            p: 1.0
+    p: 1.0
+    shuffle: true
+validation_augmentation:
+    augmentations:
+        RandomCrop:
+            height: 1280
+            width: 1280
+            p: 1.0
+        Normalize:
+            mean:
+                - 0.0
+                - 0.0
+                - 0.0
+                - 0.0
+            std:
+                - 1.0
+                - 1.0
+                - 1.0
+                - 20.0
+            max_pixel_value: 255
+            p: 1.0
+    p: 1.0
+inference_augmentation:
+    augmentations:
+        Normalize:
+            mean:
+                - 0.0
+                - 0.0
+                - 0.0
+                - 0.0
+            std:
+                - 1.0
+                - 1.0
+                - 1.0
+                - 20.0
+            max_pixel_value: 255
+            p: 1.0
+    p: 1.0
+    
+training:
+    epochs: 100 
+    optimizer: AdamW
+    lr: 1e-4
+    opt_args:
+    loss:
+        bcewithlogits:
+        jaccard:
+    loss_weights:
+        bcewithlogits: 10
+        jaccard: 2.5
+    metrics:
+        training:
+        validation:
+    callbacks:
+        model_checkpoint:
+            filepath: './models/roads/RGB+INTEN/checkpoint.pth'
+            monitor: periodic
+            period: 10
+    model_dest_path: './models/roads/RGB+INTEN.pth'
+    verbose: true
+
+inference:
+    output_dir: './results/roads/RGB+INTEN/pred_mask'
+    window_step_size_x:
+    window_step_size_y:
