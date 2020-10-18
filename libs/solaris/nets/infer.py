@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import skimage
 import torch
 from tqdm import tqdm
@@ -99,8 +100,19 @@ class Inferer(object):
                         inf_input.append(
                             infer_df[i].iloc[idx].to(device))
 
-                subarr_preds = self.model(inf_input)
-                subarr_preds = subarr_preds.cpu().data.numpy()
+                # Revision: allow batch process to save Mem cost.
+                subarr_preds_list = []
+                for batch_i in range(0, inf_input.shape[0], self.batch_size):
+                    if batch_i + self.batch_size <= inf_input.shape[0]:
+                        subarr_pred = self.model(inf_input[
+                            batch_i:batch_i+self.batch_size, ...
+                        ])
+                    else:
+                        subarr_pred = self.model(inf_input[
+                            batch_i:, ...
+                        ])
+                    subarr_preds_list.append(subarr_pred.cpu().data.numpy())
+                subarr_preds = np.concatenate(subarr_preds_list, axis=0)
             stitched_result = stitch_images(subarr_preds,
                                             idx_refs=idx_refs,
                                             out_width=src_im_width,
