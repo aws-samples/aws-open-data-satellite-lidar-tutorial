@@ -13,8 +13,8 @@ Network training/inference is a memory-intensive process. If you run into out of
 Once the SageMaker instance is successfully launched, open a terminal and follow the commands below:
 ```shell
 $ cd ~/SageMaker/
-$ git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/SpaceNet-LIDAR
-$ cd SpaceNet-LIDAR
+$ git clone https://github.com/aws-samples/aws-open-data-satellite-lidar-tutorial.git
+$ cd aws-open-data-satellite-lidar-tutorial
 ```
 This will download the repository and take you to the repository directory.
 
