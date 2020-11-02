@@ -9,9 +9,9 @@
 set -e
 
 echo "===== Downloading RGB+LiDAR merged data (~22GB) ... ====="
-aws s3 cp s3://spacenet-lidar-tutorial/data/ ./data/ --recursive
+aws s3 cp s3://aws-satellite-lidar-tutorial/data/ ./data/ --recursive --no-sign-request
 
 echo "===== Downloading pretrained model weights (617MB) ... ====="
-aws s3 cp s3://spacenet-lidar-tutorial/models/ ./models/ --recursive
+aws s3 cp s3://aws-satellite-lidar-tutorial/models/ ./models/ --recursive --no-sign-request
 
 echo "===== Downloading completes. ====="
