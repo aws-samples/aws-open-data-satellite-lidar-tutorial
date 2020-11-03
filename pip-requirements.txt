@@ -3,7 +3,7 @@ geopandas>=0.7.0
 ipykernel
 ipywidgets
 numba
-opencv-python>=4.1
+opencv-python==4.2.0.34
 osmnx
 p_tqdm
 statsmodels
