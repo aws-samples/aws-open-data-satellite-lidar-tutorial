@@ -1,5 +1,10 @@
 # Deep Learning on AWS Open Data Registry: Automatic Building and Road Extraction from Satellite and LiDAR
 
+### For [SpatialAPI 20](https://sites.google.com/ucr.edu/spatialapi20) participants: we recommend registering an AWS account to allow immersive tutorial with hands-on experience.
+- [Create a regular AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+- [Create an educational AWS account](https://aws.amazon.com/education/awseducate/apply/)
+### All tutorial contents can be reproduced within free tier services at no cost. If you have difficulty registering an AWS account, we offer a limited amount of temporary event account on a first-come, first-served basis.
+
 This is the repository for OpenData tutorial content by MLSL.
 
 ## Setup
@@ -28,7 +33,7 @@ This may take 10--15 minutes to complete.
 Then check to make sure you have a new Jupyter kernel called `conda_tutorial_env`, or `conda_[name]` if you change the environment name to `[name]`. You may need to wait for a couple of minutes and refresh the Jupyter page.
 
 ### Download from S3 buckets
-Next, download necessary files from S3 bucket prepared for this tutorial by running `download-from-s3.sh`:
+Next, download necessary files ([data browser](https://aws-satellite-lidar-tutorial.s3.amazonaws.com/index.html)) from S3 bucket prepared for this tutorial by running `download-from-s3.sh`:
 ```shell
 $ ./download-from-s3.sh
 ```
