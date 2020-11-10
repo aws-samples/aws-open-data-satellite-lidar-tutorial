@@ -14,4 +14,3 @@ scikit-image>=0.16.2
 scipy>=1.3.2
 tqdm>=4.40.0
 urllib3>=1.25.7
-tensorflow==2.3.0
