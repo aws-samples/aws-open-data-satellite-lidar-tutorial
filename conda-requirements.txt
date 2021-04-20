@@ -6,7 +6,7 @@ matplotlib>=3.1.2
 networkx>=2.4
 numpy>=1.17.3
 pandas>=0.25.3
-pyyaml==5.2
+pyyaml>=5.4
 rasterio>=1.0.23
 requests==2.22.0
 rtree>=0.9.3
